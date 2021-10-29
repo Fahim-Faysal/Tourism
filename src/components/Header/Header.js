@@ -6,9 +6,6 @@ import useFireabse from '../../hooks/useFireabse';
 const Header = () => {
       const { user, googleSignOut } = useFireabse()
       let history = useHistory()
-      let location = useLocation()
-
-      const redirect_uri = location?.state?.from || '/home';
 
       const handelLgoin = () => {
             history.push('/login')
@@ -33,10 +30,13 @@ const Header = () => {
                                                 fontWeight: "bold",
                                                 color: "red"
                                           }}>Travel Detalis</NavLink>
-                                          {/* <NavLink className='text-decoration-none mx-5' to="/doctor" activeStyle={{
-                                                fontWeight: "bold",
-                                                color: "red"
-                                          }}>Doctors</NavLink> */}
+                                          {
+                                                user.email &&
+                                                <NavLink className='text-decoration-none mx-5' to="/orders" activeStyle={{
+                                                      fontWeight: "bold",
+                                                      color: "red"
+                                                }}>All Orders</NavLink>
+                                          }
                                           <NavLink className='text-decoration-none mx-5' to="/about" activeStyle={{
                                                 fontWeight: "bold",
                                                 color: "red"

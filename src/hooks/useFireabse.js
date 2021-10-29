@@ -9,6 +9,7 @@ initilizeAuthentication()
 const useFireabse = () => {
       const [user, setUser] = useState({})
       const [error, setError] = useState('')
+      const [isloading, setIsloading] = useState(true)
 
       const provider = new GoogleAuthProvider();
       const auth = getAuth()
@@ -27,6 +28,7 @@ const useFireabse = () => {
                   else {
                         setUser({})
                   }
+                  setIsloading(false)
             })
       }, [])
 
@@ -43,7 +45,8 @@ const useFireabse = () => {
             user,
             error,
             signInWithGoogle,
-            googleSignOut
+            googleSignOut,
+            isloading
       }
 
 }
