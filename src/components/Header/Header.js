@@ -21,7 +21,7 @@ const Header = () => {
             <div>
                   <Navbar collapseOnSelect expand="lg" bg="light" variant="dark" sticky="top" >
                         <Container>
-                              <Navbar.Brand to="#home" className='text-info'>Faysal Travel Agency <br />Center</Navbar.Brand>
+                              <Navbar.Brand to="#home" className='text-info'>Faysal Travel Agency <br /></Navbar.Brand>
                               <Navbar.Toggle />
                               <Navbar.Collapse>
                                     <Nav className="me-auto">
@@ -29,7 +29,7 @@ const Header = () => {
                                                 fontWeight: "bold",
                                                 color: "red"
                                           }}>Home</NavLink>
-                                          <NavLink className='text-decoration-none mx-5' to="/package" activeStyle={{
+                                          <NavLink className='text-decoration-none mx-5' to="/details" activeStyle={{
                                                 fontWeight: "bold",
                                                 color: "red"
                                           }}>Travel Detalis</NavLink>
@@ -37,15 +37,18 @@ const Header = () => {
                                                 fontWeight: "bold",
                                                 color: "red"
                                           }}>Doctors</NavLink> */}
-                                          <NavLink className='text-decoration-none mx-5' to="/About" activeStyle={{
+                                          <NavLink className='text-decoration-none mx-5' to="/about" activeStyle={{
                                                 fontWeight: "bold",
                                                 color: "red"
                                           }}>About Us</NavLink>
                                     </Nav>
 
-                                    <Button onClick={handelLgoin} variant="outline-success">LogIn</Button>
-
-                                    <Button onClick={googleOut} variant="outline-danger m-2">logOut</Button>
+                                    {
+                                          user.email ?
+                                                <Button onClick={googleOut} variant="outline-danger m-2">logOut</Button>
+                                                :
+                                                <Button onClick={handelLgoin} variant="outline-success">LogIn</Button>
+                                    }
 
                                     {user.email &&
                                           <Navbar.Text className='text-warning'>

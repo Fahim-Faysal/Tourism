@@ -14,14 +14,8 @@ const useFireabse = () => {
       const auth = getAuth()
 
       const signInWithGoogle = () => {
-            signInWithPopup(auth, provider)
-                  .then(result => {
-                        setUser(result.user)
+            return signInWithPopup(auth, provider)
 
-                  })
-                  .catch(error => {
-                        setError(error.messeage)
-                  })
       }
 
 
