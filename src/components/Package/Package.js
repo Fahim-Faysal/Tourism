@@ -31,8 +31,8 @@ const Package = () => {
                                                 <Card.Text>
                                                       {pg.description}
                                                 </Card.Text>
-                                                <Link to={`/details/${pg._id}`}>
-                                                      <Button variant="primary">Details</Button>
+                                                <Link to={`/order/${pg._id}`}>
+                                                      <Button variant="primary">Book Now</Button>
                                                 </Link>
                                           </Card.Body>
                                     </Card>
