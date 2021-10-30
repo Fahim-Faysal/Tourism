@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import Flash from 'react-reveal/Flash';
+
+
 
 const AllOrders = () => {
 
@@ -36,7 +39,11 @@ const AllOrders = () => {
       return (
             <div>
 
-                  <h1 className='mt-5 mb-5 text-info' >All Bookings</h1>
+                  <Flash>
+                        <h1 className='mt-5 mb-5 text-info' >All Bookings</h1>
+                  </Flash>
+
+
                   <div>
                         <Table striped bordered hover>
                               <thead key={orders._id}>
@@ -66,7 +73,10 @@ const AllOrders = () => {
                               }
 
                         </Table>
+
                   </div>
+
+
             </div >
       );
 };

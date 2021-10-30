@@ -3,13 +3,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useParams } from 'react-router';
 import useAuth from '../../hooks/useAuth';
+import Slide from 'react-reveal/Slide';
 import './Details.css'
 
 const Details = () => {
       const { id } = useParams()
       const { user } = useAuth()
       const [details, setDetails] = useState([])
-      const trip = useRef()
 
 
 
@@ -37,19 +37,20 @@ const Details = () => {
 
             <div>
 
+                  <Slide right>
+                        <div className='mt-5 mb-5'>
 
-                  <div className='mt-5 mb-5'>
+                              <img style={{ width: "500px", height: "300px" }} src={details.img} alt="" />
+                              <h2 className='mt-3 text-success'>{details.name}</h2>
+                              <h3 className='text-warning'>Duration : {details.duration}</h3>
+                              <h4 className='text-danger'>Price $ {details.price}</h4>
+                        </div>
+                  </Slide>
 
-                        <img style={{ width: "500px", height: "300px" }} src={details.img} alt="" />
-                        <h2 className='mt-3 text-success'>{details.name}</h2>
-                        <h3 className='text-warning'>Duration : {details.duration}</h3>
-                        <h4 className='text-danger'>Price $ {details.price}</h4>
-                  </div>
-                  <h1 className='text-info mb-5'>Please Register To Book This Trip</h1>
+                  <Slide left><h1 className='text-info mb-5'>Please Register To Book This Trip</h1></Slide>
+
+
                   <form className='form-container' onSubmit={handleSubmit(onSubmit)}>
-
-
-
 
                         <input value={user?.displayName} {...register("name")} placeholder='Enter your Name' required />
 
@@ -64,6 +65,7 @@ const Details = () => {
                         <input type="number" {...register("phone")} placeholder='Phone Number' required />
                         <input className='btn btn-danger' value='Confirm Booking' type="submit" />
                   </form>
+
 
             </div>
       );

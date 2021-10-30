@@ -3,6 +3,7 @@ import { Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useParams } from 'react-router';
+import Flash from 'react-reveal/Flash';
 import useAuth from '../../hooks/useAuth';
 
 
@@ -44,7 +45,9 @@ const MyOrders = () => {
       const element = <FontAwesomeIcon icon={faTrash} />
       return (
             <div>
-                  <h1 className='text-success mt-5 mb-5'>All My Bookings</h1>
+                  <Flash>
+                        <h1 className='text-success mt-5 mb-5'>All My Bookings</h1>
+                  </Flash>
                   <div>
                         <Table striped bordered hover>
                               <thead key={myorders._id}>
