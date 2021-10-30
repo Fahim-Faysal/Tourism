@@ -1,4 +1,5 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import AddService from './AddService/AddService';
 import './App.css';
 import AboutUs from './components/AboutUs/AboutUs';
 import AllOrders from './components/AllOrders/AllOrders';
@@ -8,8 +9,8 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import MyOrders from './components/MyOrders/MyOrders';
 import NotFound from './components/NotFound/NotFound';
-import Package from './components/Package/Package';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
             <Route path='/home'>
               <Home></Home>
             </Route>
+            <Route path='/addservice'>
+              <AddService></AddService>
+            </Route>
             <Route path='/login'>
               <Login></Login>
             </Route>
@@ -33,6 +37,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path='/orders'>
               <AllOrders></AllOrders>
+            </PrivateRoute>
+            <PrivateRoute path='/mybooking/:id'>
+              <MyOrders></MyOrders>
             </PrivateRoute>
             <Route path='/about'>
               <AboutUs></AboutUs>

@@ -1,11 +1,13 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
-import { NavLink, useHistory, useLocation } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import useFireabse from '../../hooks/useFireabse';
 
 const Header = () => {
       const { user, googleSignOut } = useFireabse()
       let history = useHistory()
+
+      // const userEmail = user?.email;
 
       const handelLgoin = () => {
             history.push('/login')
@@ -13,6 +15,7 @@ const Header = () => {
       const googleOut = () => [
             googleSignOut()
       ]
+      // const url = 
 
       return (
             <div>
@@ -22,22 +25,31 @@ const Header = () => {
                               <Navbar.Toggle />
                               <Navbar.Collapse>
                                     <Nav className="me-auto">
-                                          <NavLink className='text-decoration-none mx-5' to="/home" activeStyle={{
+                                          <NavLink className='text-decoration-none mx-4' to="/home" activeStyle={{
                                                 fontWeight: "bold",
                                                 color: "red"
                                           }}>Home</NavLink>
-                                          <NavLink className='text-decoration-none mx-5' to="/details" activeStyle={{
+                                          <NavLink className='text-decoration-none mx-4' to="/addservice" activeStyle={{
                                                 fontWeight: "bold",
                                                 color: "red"
-                                          }}>Travel Detalis</NavLink>
+                                          }}>Add A Service</NavLink>
                                           {
                                                 user.email &&
-                                                <NavLink className='text-decoration-none mx-5' to="/orders" activeStyle={{
+                                                <NavLink className='text-decoration-none mx-4' to={`/mybooking/${user?.email}`} activeStyle={{
+                                                      fontWeight: "bold",
+                                                      color: "red"
+                                                }}>My Orders</NavLink>
+                                          }
+
+                                          {
+                                                user.email &&
+                                                <NavLink className='text-decoration-none mx-4' to="/orders" activeStyle={{
                                                       fontWeight: "bold",
                                                       color: "red"
                                                 }}>All Orders</NavLink>
                                           }
-                                          <NavLink className='text-decoration-none mx-5' to="/about" activeStyle={{
+
+                                          <NavLink className='text-decoration-none mx-4' to="/about" activeStyle={{
                                                 fontWeight: "bold",
                                                 color: "red"
                                           }}>About Us</NavLink>
@@ -58,7 +70,7 @@ const Header = () => {
 
                         </Container>
                   </Navbar>
-            </div>
+            </div >
       );
 };
 

@@ -2,24 +2,32 @@ import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { useParams } from 'react-router';
+import useAuth from '../../hooks/useAuth';
 
-const AllOrders = () => {
 
-      const [orders, setOrders] = useState([])
+
+
+const MyOrders = () => {
+      const { user } = useAuth()
+
+      const { id } = useParams()
+
+
+
+
+      const [myorders, setMyOrders] = useState([])
 
       useEffect(() => {
-            fetch('https://calm-reef-13122.herokuapp.com/allbooking')
+            fetch(`http://localhost:4000/mybooking/${id}`)
                   .then(res => res.json())
-                  .then(data => setOrders(data))
+                  .then(data => setMyOrders(data))
       }, [])
-      const element = <FontAwesomeIcon icon={faTrash} />
-
-      //delete an user
 
       const handelDeleteUser = (id) => {
             const proceed = window.confirm('Are You Sure You Want To Delete')
             if (proceed) {
-                  const url = `https://calm-reef-13122.herokuapp.com/allbooking/${id}`
+                  const url = `http://localhost:4000/mybooking/${id}`
                   fetch(url, {
                         method: "DELETE"
                   })
@@ -27,19 +35,19 @@ const AllOrders = () => {
                         .then(data => {
                               if (data.deletedCount > 0) {
                                     alert('Deleted Successfully');
-                                    const remaining = orders.filter(order => order._id !== id)
-                                    setOrders(remaining)
+                                    const remaining = myorders.filter(order => order._id !== id)
+                                    setMyOrders(remaining)
                               }
                         })
             }
       }
+      const element = <FontAwesomeIcon icon={faTrash} />
       return (
             <div>
-
-                  <h1>All order</h1>
+                  <h1 className='text-success mt-5 mb-5'>All My Bookings</h1>
                   <div>
                         <Table striped bordered hover>
-                              <thead key={orders._id}>
+                              <thead key={myorders._id}>
                                     <tr>
                                           <th>Name</th>
                                           <th>Email</th>
@@ -49,9 +57,8 @@ const AllOrders = () => {
                                           <th>Phone</th>
                                     </tr>
                               </thead>
-
                               {
-                                    orders.map(order => <tbody>
+                                    myorders.map(order => <tbody>
                                           <tr key={order._id}>
                                                 <td>{order.name}</td>
                                                 <td>{order.email}</td>
@@ -64,11 +71,10 @@ const AllOrders = () => {
                                           </tr>
                                     </tbody>)
                               }
-
                         </Table>
                   </div>
-            </div >
+            </div>
       );
 };
 
-export default AllOrders;
+export default MyOrders;

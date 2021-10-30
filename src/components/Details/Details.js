@@ -41,8 +41,11 @@ const Details = () => {
                   </div>
                   <h1 className='text-info mb-5'>Please Register To Book This Trip</h1>
                   <form className='form-container' onSubmit={handleSubmit(onSubmit)}>
-                        <input value={user?.displayName} {...register("name")} />
-                        <input value={user?.email} {...register("email")} />
+
+
+                        <input value={user?.displayName} {...register("name")} placeholder='Enter your Name' />
+                        <input value={user?.email} {...register("email")} placeholder="Enter your Email" />
+                        <input value={details?.name} {...register("trip")} placeholder="Enter the destination name" />
                         <input {...register("city")} placeholder='Enter the city name' />
                         <input {...register("address")} placeholder='Enter the address' />
                         <input type="number" {...register("phone")} placeholder='Phone Number' />
