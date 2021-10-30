@@ -36,7 +36,7 @@ const AllOrders = () => {
       return (
             <div>
 
-                  <h1>All order</h1>
+                  <h1 className='mt-5 mb-5 text-info' >All Bookings</h1>
                   <div>
                         <Table striped bordered hover>
                               <thead key={orders._id}>

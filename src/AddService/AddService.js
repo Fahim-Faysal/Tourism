@@ -4,13 +4,15 @@ import { useForm } from "react-hook-form";
 const AddService = () => {
       const { register, handleSubmit, reset } = useForm();
       const onSubmit = data => {
-            // axios.post('https://calm-reef-13122.herokuapp.com/booked', data)
-            //       .then(res => {
-            //             if (res.data.insertedId) {
-            //                   alert('Booked Successfully')
-            //                   reset()
-            //             }
-            //       })
+            console.log(data);
+            axios.post('https://calm-reef-13122.herokuapp.com/addpackage', data)
+                  .then(
+                        res => {
+                              if (res.data.insertedId) {
+                                    alert('Booked Successfully')
+                                    reset()
+                              }
+                        })
       }
       return (
             <div>
@@ -18,13 +20,13 @@ const AddService = () => {
                   <form className='form-container mt-5' onSubmit={handleSubmit(onSubmit)}>
 
 
-                        <input  {...register("name")} placeholder='Enter your Name' />
-                        <input  {...register("email")} placeholder="Enter your Email" />
-                        <input {...register("trip")} placeholder="Enter the destination name" />
-                        <input {...register("city")} placeholder='Enter the city name' />
-                        <input {...register("address")} placeholder='Enter the address' />
-                        <input type="number" {...register("phone")} placeholder='Phone Number' />
-                        <input className='btn btn-danger' value='Add Service' type="submit" />
+                        <input  {...register("name")} placeholder='Enter the place name' />
+                        <input  {...register("description")} placeholder="Enter the description" />
+                        <input type="number" {...register("price")} placeholder='Enter the price' />
+                        <input {...register("duration")} placeholder="Duration" />
+                        <input {...register("img")} placeholder='Paste the image url' />
+
+                        <input className='btn btn-danger' value='Add Package' type="submit" />
                   </form>
             </div>
       );

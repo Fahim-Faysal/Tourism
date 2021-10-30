@@ -29,10 +29,12 @@ const Header = () => {
                                                 fontWeight: "bold",
                                                 color: "red"
                                           }}>Home</NavLink>
-                                          <NavLink className='text-decoration-none mx-4' to="/addservice" activeStyle={{
-                                                fontWeight: "bold",
-                                                color: "red"
-                                          }}>Add A Service</NavLink>
+                                          {
+                                                user.email &&
+                                                <NavLink className='text-decoration-none mx-4' to="/addservice" activeStyle={{
+                                                      fontWeight: "bold",
+                                                      color: "red"
+                                                }}>Add A Package</NavLink>}
                                           {
                                                 user.email &&
                                                 <NavLink className='text-decoration-none mx-4' to={`/mybooking/${user?.email}`} activeStyle={{

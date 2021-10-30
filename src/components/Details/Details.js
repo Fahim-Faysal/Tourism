@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useParams } from 'react-router';
 import useAuth from '../../hooks/useAuth';
@@ -8,7 +8,11 @@ import './Details.css'
 const Details = () => {
       const { id } = useParams()
       const { user } = useAuth()
-      const [details, setDetails] = useState('')
+      const [details, setDetails] = useState([])
+      const trip = useRef()
+
+
+
 
       useEffect(() => {
             fetch(`https://calm-reef-13122.herokuapp.com/details/${id}`)
@@ -18,6 +22,7 @@ const Details = () => {
 
       const { register, handleSubmit, reset } = useForm();
       const onSubmit = data => {
+            console.log(data);
             axios.post('https://calm-reef-13122.herokuapp.com/booked', data)
                   .then(res => {
                         if (res.data.insertedId) {
@@ -26,6 +31,7 @@ const Details = () => {
                         }
                   })
       }
+
 
       return (
 
@@ -43,12 +49,19 @@ const Details = () => {
                   <form className='form-container' onSubmit={handleSubmit(onSubmit)}>
 
 
-                        <input value={user?.displayName} {...register("name")} placeholder='Enter your Name' />
-                        <input value={user?.email} {...register("email")} placeholder="Enter your Email" />
-                        <input value={details?.name} {...register("trip")} placeholder="Enter the destination name" />
-                        <input {...register("city")} placeholder='Enter the city name' />
-                        <input {...register("address")} placeholder='Enter the address' />
-                        <input type="number" {...register("phone")} placeholder='Phone Number' />
+
+
+                        <input value={user?.displayName} {...register("name")} placeholder='Enter your Name' required />
+
+                        <input value={user?.email}  {...register("email")} placeholder="Enter your Email" required />
+
+                        <input {...register("trip")} placeholder="Enter the destination name" required />
+
+                        <input {...register("city")} placeholder='Enter the city name' required />
+
+                        <input {...register("address")} placeholder='Enter the address' required />
+
+                        <input type="number" {...register("phone")} placeholder='Phone Number' required />
                         <input className='btn btn-danger' value='Confirm Booking' type="submit" />
                   </form>
 
