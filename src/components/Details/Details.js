@@ -56,7 +56,10 @@ const Details = () => {
 
                         <input value={user?.email}  {...register("email")} placeholder="Enter your Email" required />
 
-                        <input {...register("trip")} placeholder="Enter the destination name" required />
+                        {
+                              details?.name &&
+                              <input value={details?.name} {...register("trip")} placeholder="Enter the destination name" required />
+                        }
 
                         <input {...register("city")} placeholder='Enter the city name' required />
 
