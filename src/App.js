@@ -3,7 +3,6 @@ import './App.css';
 import AboutUs from './components/AboutUs/AboutUs';
 import AllOrders from './components/AllOrders/AllOrders';
 import AuthProvider from './components/Context/AuthProvider';
-import Delete from './components/Delete/Delete';
 import Details from './components/Details/Details';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';

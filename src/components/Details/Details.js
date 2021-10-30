@@ -11,14 +11,14 @@ const Details = () => {
       const [details, setDetails] = useState('')
 
       useEffect(() => {
-            fetch(`http://localhost:4000/details/${id}`)
+            fetch(`https://calm-reef-13122.herokuapp.com/details/${id}`)
                   .then(res => res.json())
                   .then(data => setDetails(data));
       }, [])
 
       const { register, handleSubmit, reset } = useForm();
       const onSubmit = data => {
-            axios.post('http://localhost:4000/booked', data)
+            axios.post('https://calm-reef-13122.herokuapp.com/booked', data)
                   .then(res => {
                         if (res.data.insertedId) {
                               alert('Booked Successfully')

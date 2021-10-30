@@ -8,7 +8,7 @@ const AllOrders = () => {
       const [orders, setOrders] = useState([])
 
       useEffect(() => {
-            fetch('http://localhost:4000/allbooking')
+            fetch('https://calm-reef-13122.herokuapp.com/allbooking')
                   .then(res => res.json())
                   .then(data => setOrders(data))
       }, [])
@@ -19,7 +19,7 @@ const AllOrders = () => {
       const handelDeleteUser = (id) => {
             const proceed = window.confirm('Are You Sure You Want To Delete')
             if (proceed) {
-                  const url = `http://localhost:4000/allbooking/${id}`
+                  const url = `https://calm-reef-13122.herokuapp.com/allbooking/${id}`
                   fetch(url, {
                         method: "DELETE"
                   })

@@ -9,7 +9,7 @@ const Package = () => {
 
 
       useEffect(() => {
-            fetch('http://localhost:4000/package')
+            fetch('https://calm-reef-13122.herokuapp.com/package')
                   .then(res => res.json())
                   .then(data => setPackages(data));
       }, [])
