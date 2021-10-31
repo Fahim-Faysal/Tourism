@@ -11,7 +11,7 @@ const AddService = () => {
                   .then(
                         res => {
                               if (res.data.insertedId) {
-                                    alert('Booked Successfully')
+                                    alert('Added Successfully')
                                     reset()
                               }
                         })

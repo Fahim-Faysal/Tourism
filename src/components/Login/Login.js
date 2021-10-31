@@ -29,12 +29,12 @@ const Login = () => {
       }
 
 
-      const element = <FontAwesomeIcon icon={faGoogle} />
+      // const element = <FontAwesomeIcon icon={faGoogle} />
 
       return (
             <div>
                   <h2 className='text-success mt-5 mb-5'>Please Login</h2>
-                  <Button className='w-25 fs-3' onClick={handelGoogleSignIn} variant="warning"><span className='p-3 text-white'>{element}</span>  Log In with Google</Button>
+                  <Button className='w-25 fs-2' onClick={handelGoogleSignIn} variant="warning"><span className=' text-danger fs-2'><FontAwesomeIcon icon={faGoogle} /></span>&nbsp;  Log In with Google</Button>
 
             </div>
       );

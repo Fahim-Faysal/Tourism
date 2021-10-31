@@ -1,7 +1,9 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
-import { NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import useFireabse from '../../hooks/useFireabse';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
       const { user, googleSignOut } = useFireabse()
@@ -15,13 +17,15 @@ const Header = () => {
       const googleOut = () => [
             googleSignOut()
       ]
-      // const url = 
+      const signIn = <FontAwesomeIcon icon={faSignInAlt} />
+      const signOut = <FontAwesomeIcon icon={faSignInAlt} />
+
 
       return (
             <div>
-                  <Navbar collapseOnSelect expand="lg" bg="light" variant="dark" sticky="top" >
+                  <Navbar collapseOnSelect expand="lg" bg="light" variant="light" sticky="top" >
                         <Container>
-                              <Navbar.Brand to="#home" className='text-info'>Faysal Travel Agency <br /></Navbar.Brand>
+                              <Navbar.Brand to="#home" className='text-secondary text-decoration-none'>Faysal Travel Agency <br /></Navbar.Brand>
                               <Navbar.Toggle />
                               <Navbar.Collapse>
                                     <Nav className="me-auto">
@@ -40,7 +44,7 @@ const Header = () => {
                                                 <NavLink className='text-decoration-none mx-4' to={`/mybooking/${user?.email}`} activeStyle={{
                                                       fontWeight: "bold",
                                                       color: "red"
-                                                }}>My Orders</NavLink>
+                                                }}>My Bookings</NavLink>
                                           }
 
                                           {
@@ -48,7 +52,7 @@ const Header = () => {
                                                 <NavLink className='text-decoration-none mx-4' to="/orders" activeStyle={{
                                                       fontWeight: "bold",
                                                       color: "red"
-                                                }}>All Orders</NavLink>
+                                                }}>All Bookings</NavLink>
                                           }
 
                                           <NavLink className='text-decoration-none mx-4' to="/about" activeStyle={{
@@ -59,9 +63,9 @@ const Header = () => {
 
                                     {
                                           user.email ?
-                                                <Button onClick={googleOut} variant="outline-danger m-2">logOut</Button>
+                                                <Button onClick={googleOut} variant="outline-danger m-2"><span>{signOut}</span>&nbsp; LogOut</Button>
                                                 :
-                                                <Button onClick={handelLgoin} variant="outline-success">LogIn</Button>
+                                                <Button onClick={handelLgoin} variant="outline-success"><span>{signIn}</span>&nbsp; LogIn</Button>
                                     }
 
                                     {user.email &&

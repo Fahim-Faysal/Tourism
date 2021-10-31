@@ -49,7 +49,7 @@ const MyOrders = () => {
                         <h1 className='text-success mt-5 mb-5'>All My Bookings</h1>
                   </Flash>
                   <div>
-                        <Table striped bordered hover>
+                        <Table responsive striped bordered hover>
                               <thead key={myorders._id}>
                                     <tr>
                                           <th>Name</th>
