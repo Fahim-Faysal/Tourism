@@ -38,7 +38,7 @@ const Header = () => {
                                                 <NavLink className='text-decoration-none mx-4' to="/addservice" activeStyle={{
                                                       fontWeight: "bold",
                                                       color: "red"
-                                                }}>Add A Package</NavLink>}
+                                                }}>Add A New Package</NavLink>}
                                           {
                                                 user.email &&
                                                 <NavLink className='text-decoration-none mx-4' to={`/mybooking/${user?.email}`} activeStyle={{
@@ -52,7 +52,7 @@ const Header = () => {
                                                 <NavLink className='text-decoration-none mx-4' to="/orders" activeStyle={{
                                                       fontWeight: "bold",
                                                       color: "red"
-                                                }}>All Bookings</NavLink>
+                                                }}>Manage All Bookings</NavLink>
                                           }
 
                                           <NavLink className='text-decoration-none mx-4' to="/about" activeStyle={{

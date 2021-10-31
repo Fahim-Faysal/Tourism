@@ -19,7 +19,7 @@ const Package = () => {
       return (
             <div>
                   <Zoom>
-                        <h1 className='text-success mt-5 mb-5'>Our Regular Travel Packages</h1>
+                        <h1 className='text-success mt-5 mb-5 fw-bolder'>Top Destinations</h1>
                   </Zoom>
                   <div className='row container ms-5 '>
                         {
